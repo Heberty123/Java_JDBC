@@ -18,6 +18,7 @@ public class Program {
         ResultSet rs = null;
 
         try{
+            /*
             st = conn.prepareStatement("INSERT INTO seller " +
                     "(Name, Email, BirthDate, BaseSalary, DepartmentId) " +
                     "VALUES (?, ?, ?, ?, ?)",
@@ -28,6 +29,9 @@ public class Program {
             st.setDate(3, new java.sql.Date(sdf.parse("04/10/2002").getTime()));
             st.setDouble(4, 4899.90);
             st.setInt(5, 1);
+            */
+
+            st = conn.prepareStatement("INSERT INTO department (Name) VALUES ('D2'), ('D3')", Statement.RETURN_GENERATED_KEYS);
 
             int rowAffected = st.executeUpdate();
 
@@ -44,9 +48,11 @@ public class Program {
         catch(SQLException e){
             e.printStackTrace();
         }
+        /*
         catch(ParseException e){
             e.printStackTrace();
         }
+         */
         finally {
             DB.closeConnection();
             DB.closeStatement(st);
